@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import PubNub from "pubnub";
+import { PubNubProvider } from "pubnub-react";
+import faker from "faker";
 
-function App() {
+import { Chat } from "./components/Chat";
+
+import "./App.css";
+
+const uuid = faker.name.firstName();
+/**
+ * Initializing pubnub with a publish and a subscribe key you can get from the PubNub admin panel,
+ * once you login and create a new "keyset". You should also give a unique "uuid" to the constructor
+ * which is used to identify the connected clients.
+ */
+const pubnub = new PubNub({
+  publishKey: process.env.REACT_APP_PUBNUB_PUBLISH_KEY,
+  subscribeKey: process.env.REACT_APP_PUBNUB_SUBSCRIBE_KEY,
+  uuid,
+});
+
+/**
+ * Here, I am wrapping the Chat component within a PubNubProvider, which will make the pubnub instance
+ * visible to the child components via React Context.
+ */
+export const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PubNubProvider client={pubnub}>
+      <Chat uuid={uuid} />
+    </PubNubProvider>
   );
-}
-
-export default App;
+};

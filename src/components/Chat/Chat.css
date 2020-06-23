@@ -1,0 +1,81 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.chat header {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  background-color: #000181;
+  color: #fff;
+  margin: 0;
+  padding: 20px;
+}
+
+.chat header img {
+  width: 90px;
+  margin-right: 20px;
+}
+
+.chat header h1 {
+  font-size: 28px;
+}
+
+.chat .message-container {
+  display: flex;
+  flex: 1;
+  background-color: #bdbdbd;
+}
+
+.chat .messages {
+  flex: 1;
+  padding: 0;
+  background-color: #008081;
+  margin: 10px;
+}
+
+.chat .message-row {
+  display: flex;
+}
+
+.chat .message-row:nth-of-type(even) {
+  background-color: #fbfbfb;
+}
+
+.chat .message-row:nth-of-type(odd) {
+  background-color: #e8e8e8;
+}
+
+.chat .message {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+}
+
+.chat .new-message {
+  font-family: "Windows 95", sans-serif;
+  flex: 1;
+}
+
+.chat .created-at {
+  padding: 0.75rem 0 0.75rem 1.25rem;
+  width: 115px;
+}
+
+.chat .sender {
+  padding: 0.75rem 0rem;
+  text-align: right;
+  width: 65px;
+}
+
+.chat .list-group-item {
+  padding: 0;
+}
+
+.chat .submit-btn {
+  font-family: "Windows 95", sans-serif;
+  width: 200px;
+}
